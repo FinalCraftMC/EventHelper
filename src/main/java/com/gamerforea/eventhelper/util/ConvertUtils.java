@@ -87,13 +87,13 @@ public final class ConvertUtils
 			getBukkitEntity = Entity.class.getDeclaredMethod("getBukkitEntity");
 			getBukkitEntity.setAccessible(true);
 
-			getMinecraftEntity = Class.forName("org.bukkit.craftbukkit.entity.CraftEntity").getField("entity");
+			getMinecraftEntity = CraftUtils.getCraftClass("entity.CraftEntity").getDeclaredField("entity");
 			getMinecraftEntity.setAccessible(true);
 
-			getMinecraftWorld = Class.forName("org.bukkit.craftbukkit.CraftWorld").getField("world");
+			getMinecraftWorld = CraftUtils.getCraftClass("CraftWorld").getDeclaredField("world");
 			getMinecraftWorld.setAccessible(true);
 
-			getMinecraftItemStack = Class.forName("org.bukkit.craftbukkit.inventory.CraftItemStack").getField("handle");
+			getMinecraftItemStack = CraftUtils.getCraftClass("inventory.CraftItemStack").getDeclaredField("handle");
 			getMinecraftItemStack.setAccessible(true);
 
 			asCraftMirror = CraftUtils.getCraftClass("inventory.CraftItemStack").getDeclaredMethod("asCraftMirror", ItemStack.class);
