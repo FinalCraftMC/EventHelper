@@ -22,29 +22,49 @@ public final class ConvertUtils
 	private static final Field getMinecraftWorld;
 	private static final Field getMinecraftItemStack;
 
-	public static Entity toMinecraftEntity(org.bukkit.entity.Entity bEntity) throws Exception
+	public static Entity toMinecraftEntity(org.bukkit.entity.Entity bEntity)
 	{
-		return (Entity)getMinecraftEntity.get(bEntity);
+		try {
+			return (Entity)getMinecraftEntity.get(bEntity);
+		}catch (Exception e){
+			throw new RuntimeException(e);
+		}
 	}
 
-	public static WorldServer toMinecraftWorld(org.bukkit.World bWorld) throws Exception
+	public static WorldServer toMinecraftWorld(org.bukkit.World bWorld)
 	{
-		return (WorldServer) getMinecraftWorld.get(bWorld);
+		try {
+			return (WorldServer) getMinecraftWorld.get(bWorld);
+		}catch (Exception e){
+			throw new RuntimeException(e);
+		}
 	}
 
-	public static ItemStack toMinecraftItemStack(org.bukkit.inventory.ItemStack bItemStack) throws Exception
+	public static ItemStack toMinecraftItemStack(org.bukkit.inventory.ItemStack bItemStack)
 	{
-		return (ItemStack) getMinecraftItemStack.get(bItemStack);
+		try {
+			return (ItemStack) getMinecraftItemStack.get(bItemStack);
+		}catch (Exception e){
+			throw new RuntimeException(e);
+		}
 	}
 
-	public static org.bukkit.entity.Entity toBukkitEntity(Entity entity) throws Exception
+	public static org.bukkit.entity.Entity toBukkitEntity(Entity entity)
 	{
-		return (org.bukkit.entity.Entity) getBukkitEntity.invoke(entity);
+		try {
+			return (org.bukkit.entity.Entity) getBukkitEntity.invoke(entity);
+		}catch (Exception e){
+			throw new RuntimeException(e);
+		}
 	}
 
-	public static Player toBukkitEntity(EntityPlayer player) throws Exception
+	public static Player toBukkitEntity(EntityPlayer player)
 	{
-		return (Player) getBukkitEntity.invoke(player);
+		try {
+			return (Player) getBukkitEntity.invoke(player);
+		}catch (Exception e){
+			throw new RuntimeException(e);
+		}
 	}
 
 	public static org.bukkit.World toBukkitWorld(World world)
@@ -52,9 +72,13 @@ public final class ConvertUtils
 		return Bukkit.getWorld(world.getWorldInfo().getWorldName());
 	}
 
-	public static org.bukkit.inventory.ItemStack toBukkitItemStackMirror(ItemStack stack) throws Exception
+	public static org.bukkit.inventory.ItemStack toBukkitItemStackMirror(ItemStack stack)
 	{
-		return (org.bukkit.inventory.ItemStack) asCraftMirror.invoke(null, stack);
+		try {
+			return (org.bukkit.inventory.ItemStack) asCraftMirror.invoke(null, stack);
+		}catch (Exception e){
+			throw new RuntimeException(e);
+		}
 	}
 
 	public static BlockFace toBukkitFace(ForgeDirection direction)
